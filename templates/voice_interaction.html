@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Interaction</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Voice Interaction</h1>
+        <button id="toggle-mic-btn">Start Listening</button>
+        <div id="status"></div>
+        <div id="transcript">
+            <h2>You said:</h2>
+            <p id="user-input"></p>
+        </div>
+        <div id="response">
+            <h2>AI Said:</h2>
+            <p id="ai-output"></p>
+        </div>
+        <p><a href="/">Back to Home</a></p>
+        <p><a href="/settings">Settings</a></p>
+    </div>
+    <script src="/static/js/voice_interaction.js"></script> {# Assuming static files are served from /static/ #}
+</body>
+</html>
