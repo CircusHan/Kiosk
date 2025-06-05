@@ -1,0 +1,6 @@
+# macOS
+*.DS_Store
+__MACOSX/
+
+# Uploaded archives
+kiosk_app 2.zip
