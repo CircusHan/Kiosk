@@ -111,7 +111,7 @@ Select from menu:
 1. **Full Application**: Runs both GUI and API server
 2. **API Only**: Runs just the backend API server
 3. **Development Mode**: Enables hot reload for development
-4. **Run Tests**: Execute test suite
+4. **Run Tests**: `pytest -v tests/`
 5. **Database Reset**: Clear and reinitialize database
 
 ### Troubleshooting
