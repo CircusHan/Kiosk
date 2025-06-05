@@ -67,6 +67,11 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 python -m app.main
 ```
 
+### 6. 테스트 실행
+```bash
+pytest -v tests/
+```
+
 ## 프로젝트 구조
 
 ```
