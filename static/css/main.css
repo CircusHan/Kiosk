@@ -652,3 +652,191 @@ body {
         padding: 20px;
     }
 }
+
+/* === Settings Page Specific Styles === */
+#settings-form {
+    margin-top: 30px; /* Increased margin */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center form elements */
+    padding: 20px;
+    background-color: var(--background-color); /* Use existing var */
+    border-radius: var(--border-radius); /* Use existing var */
+    box-shadow: var(--shadow); /* Use existing var */
+    max-width: 600px; /* Consistent with .patient-form */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#settings-form div {
+    margin-bottom: 20px; /* Increased margin */
+    width: 100%;
+    max-width: 450px; /* Slightly wider for API key */
+}
+
+#settings-form label {
+    display: block;
+    margin-bottom: 8px; /* Consistent with .form-group label */
+    font-weight: bold;
+    color: var(--text-color); /* Use existing var */
+}
+
+#settings-form input[type="password"] {
+    width: 100%;
+    padding: 15px; /* Consistent with .form-group input */
+    border: 2px solid var(--medium-gray); /* Use existing var */
+    border-radius: var(--border-radius); /* Use existing var */
+    box-sizing: border-box;
+    font-size: var(--font-size-base); /* Use existing var */
+    min-height: var(--min-touch-target); /* Use existing var */
+}
+
+#settings-form input[type="password"]:focus {
+    border-color: var(--primary-color); /* Use existing var */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1); /* Consistent focus style */
+}
+
+#settings-form button {
+    padding: 15px 30px; /* Consistent with .next-btn */
+    background-color: var(--primary-color); /* Use existing var */
+    color: white;
+    border: none;
+    border-radius: var(--border-radius); /* Use existing var */
+    cursor: pointer;
+    font-size: var(--font-size-base); /* Use existing var */
+    font-weight: bold; /* Consistent with .next-btn */
+    transition: var(--transition); /* Use existing var */
+    width: 100%;
+    max-width: 450px; /* Match input group */
+}
+
+#settings-form button:hover {
+    background-color: var(--primary-dark); /* Use existing var */
+    transform: translateY(-2px); /* Consistent hover effect */
+}
+
+#message {
+    margin-top: 20px; /* Increased margin */
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    border-radius: var(--border-radius);
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* === Voice Interaction Page Specific Styles === */
+/* General container for voice page, if not already covered by .screen */
+.voice-container { /* Assuming .container might be too generic, let's use .screen padding for now */
+    /* padding: 20px; done by .screen */
+    /* max-width: 800px; done by .app-container or specific layout */
+    /* margin: auto; done by .app-container */
+}
+
+#toggle-mic-btn {
+    padding: 15px 25px;
+    font-size: var(--font-size-large); /* Larger font for main action */
+    background-color: var(--secondary-color); /* Use existing var (e.g., green) */
+    color: white;
+    border: none;
+    border-radius: var(--border-radius); /* Use existing var */
+    cursor: pointer;
+    display: block;
+    margin: 30px auto; /* Center the button, more margin */
+    box-shadow: var(--shadow);
+    transition: var(--transition);
+    min-height: var(--min-touch-target);
+}
+
+#toggle-mic-btn:hover {
+    background-color: #27ae60; /* Darker shade of secondary */
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+#status {
+    margin: 20px auto; /* Centered */
+    padding: 15px; /* More padding */
+    border: 1px solid var(--medium-gray); /* Use existing var */
+    background-color: var(--light-gray); /* Use existing var */
+    border-radius: var(--border-radius); /* Use existing var */
+    text-align: center;
+    font-size: var(--font-size-base);
+    max-width: 600px; /* Limit width */
+}
+
+#transcript, #response {
+    margin-top: 25px; /* Increased margin */
+    padding: 20px; /* More padding */
+    border: 1px solid var(--medium-gray); /* Use existing var */
+    border-radius: var(--border-radius); /* Use existing var */
+    background-color: var(--background-color); /* Use existing var */
+    box-shadow: var(--shadow);
+    max-width: 700px; /* Limit width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#transcript h2, #response h2 {
+    margin-top: 0;
+    font-size: 1.5em; /* Slightly larger */
+    color: var(--dark-color); /* Use existing var */
+    margin-bottom: 15px; /* More space below h2 */
+    border-bottom: 1px solid var(--light-gray); /* Separator line */
+    padding-bottom: 10px; /* Space for separator */
+}
+
+#user-input, #ai-output {
+    min-height: 50px; /* Ensure space even when empty */
+    padding: 12px; /* More padding */
+    background-color: var(--light-gray); /* Lighter background for text areas */
+    border-radius: 8px; /* Slightly different radius for inner elements */
+    font-size: var(--font-size-base);
+    color: var(--text-color);
+    line-height: 1.5;
+}
+
+/* Adjust links on these pages if they are inside .screen or a new .container */
+.screen p a, .container p a { /* More specific selector for links if needed */
+    color: var(--primary-color);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px; /* More margin */
+    font-weight: bold;
+}
+
+.screen p a:hover, .container p a:hover {
+    text-decoration: underline;
+    color: var(--primary-dark);
+}
+
+/* Ensure h1 on these pages are styled if not inheriting from screen-header */
+.screen > h1, .container > h1 { /* If h1 is direct child of .screen and not in .screen-header */
+    text-align: center;
+    color: var(--dark-color);
+    font-size: var(--font-size-xlarge);
+    margin-bottom: 30px;
+}
+
+/* Add a general container class for content on settings and voice pages, if needed */
+/* .content-container is used in settings.html and voice_interaction.html in the prompt */
+/* However, the HTML files use <div class="container"> */
+/* The existing .screen class already provides padding. */
+/* The .app-container provides max-width and centering. */
+/* No new .container CSS might be needed if elements are placed directly in .screen */
+/* The example CSS provided .container styling, let's ensure it's compatible or adapt */
+
+.container { /* Styles for the div class="container" in settings.html and voice.html */
+    padding: 20px; /* Already provided by .screen, but can be a fallback */
+    max-width: 800px; /* Can be more specific than app-container for content areas */
+    margin-left: auto; /* Center content */
+    margin-right: auto;
+}
+
+.container h1 { /* Styling for h1 inside div class="container" */
+    text-align: center;
+    color: var(--dark-color);
+    font-size: var(--font-size-xlarge);
+    margin-bottom: 30px;
+}

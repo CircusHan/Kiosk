@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Settings</h1>
+        <form id="settings-form">
+            <div>
+                <label for="gemini-api-key">Gemini API Key:</label>
+                <input type="password" id="gemini-api-key" name="gemini_api_key" required>
+            </div>
+            <button type="submit">Save API Key</button>
+        </form>
+        <p id="message"></p>
+        <p><a href="/">Back to Home</a></p>
+    </div>
+    <script src="/static/js/settings.js"></script> {# Assuming static files are served from /static/ #}
+</body>
+</html>
