@@ -51,10 +51,10 @@ class KioskScheduler:
     ) -> Job:
         """Add session timeout job"""
         job_id = f"session_timeout_{session_id}"
-        
+
         # Remove existing timeout for this session
-        if job_id in self._session_timers:
-            self.scheduler.remove_job(job_id)
+        if session_id in self._session_timers:
+            self.scheduler.remove_job(self._session_timers[session_id].id)
         
         # Add new timeout job
         job = self.scheduler.add_job(
@@ -74,17 +74,16 @@ class KioskScheduler:
     
     def reset_session_timeout(self, session_id: str):
         """Reset session timeout by rescheduling"""
-        job_id = f"session_timeout_{session_id}"
-        if job_id in self._session_timers:
-            job = self._session_timers[job_id]
+        if session_id in self._session_timers:
+            job = self._session_timers[session_id]
             job.reschedule('interval', seconds=job.trigger.interval.total_seconds())
             logger.info(f"Session timeout reset for {session_id}")
     
     def cancel_session_timeout(self, session_id: str):
         """Cancel session timeout"""
-        job_id = f"session_timeout_{session_id}"
-        if job_id in self._session_timers:
-            self.scheduler.remove_job(job_id)
+        if session_id in self._session_timers:
+            job = self._session_timers[session_id]
+            self.scheduler.remove_job(job.id)
             del self._session_timers[session_id]
             logger.info(f"Session timeout cancelled for {session_id}")
     
