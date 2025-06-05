@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>배리어-프리 보건소 키오스크</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/accessibility.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Web Speech API for TTS -->
+    <meta name="format-detection" content="telephone=no">
+</head>
+<body>
+    <!-- Accessibility Controls -->
+    <div id="accessibility-bar" class="accessibility-bar">
+        <div class="accessibility-controls">
+            <!-- Font Size Controls -->
+            <div class="font-controls">
+                <label>글자 크기:</label>
+                <button id="font-decrease" class="accessibility-btn" aria-label="글자 크기 줄이기">
+                    <i class="fas fa-minus"></i> A
+                </button>
+                <input type="range" id="font-slider" min="12" max="24" value="16" aria-label="글자 크기 조절">
+                <button id="font-increase" class="accessibility-btn" aria-label="글자 크기 늘리기">
+                    <i class="fas fa-plus"></i> A
+                </button>
+            </div>
+            
+            <!-- Accessibility Options -->
+            <div class="accessibility-options">
+                <button id="contrast-toggle" class="accessibility-btn" aria-label="고대비 모드 켜기/끄기">
+                    <i class="fas fa-adjust"></i> 고대비
+                </button>
+                <button id="voice-toggle" class="accessibility-btn active" aria-label="음성 안내 켜기/끄기">
+                    <i class="fas fa-volume-up"></i> 음성안내
+                </button>
+                <button id="help-btn" class="accessibility-btn emergency" aria-label="도움 요청">
+                    <i class="fas fa-phone"></i> 도움요청
+                </button>
+            </div>
+            
+            <!-- Language Selection -->
+            <div class="language-selection">
+                <select id="language-selector" aria-label="언어 선택">
+                    <option value="ko">한국어</option>
+                    <option value="en">English</option>
+                    <option value="zh">中文</option>
+                    <option value="vi">Tiếng Việt</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="app" class="app-container">
+        <!-- Home Screen -->
+        <div id="home-screen" class="screen active">
+            <div class="screen-header">
+                <h1 class="main-title">환영합니다</h1>
+                <p class="subtitle">서비스를 선택해주세요</p>
+            </div>
+            
+            <div class="service-buttons">
+                <button id="reception-btn" class="service-btn" data-service="reception">
+                    <div class="service-icon">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <div class="service-text">
+                        <h2>접수</h2>
+                        <p>진료 접수 및 순번표 발급</p>
+                    </div>
+                </button>
+                
+                <button id="payment-btn" class="service-btn" data-service="payment">
+                    <div class="service-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="service-text">
+                        <h2>수납</h2>
+                        <p>진료비 결제</p>
+                    </div>
+                </button>
+                
+                <button id="certificate-btn" class="service-btn" data-service="certificate">
+                    <div class="service-icon">
+                        <i class="fas fa-file-medical"></i>
+                    </div>
+                    <div class="service-text">
+                        <h2>증명서 발급</h2>
+                        <p>각종 의료 증명서</p>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Reception Screen -->
+        <div id="reception-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="goHome()">
+                    <i class="fas fa-arrow-left"></i> 뒤로
+                </button>
+                <h1>진료 접수</h1>
+            </div>
+            
+            <div class="content-stack">
+                <!-- Patient Info Input -->
+                <div id="patient-input" class="step-content active">
+                    <h2>환자 정보를 입력해주세요</h2>
+                    <form class="patient-form">
+                        <div class="form-group">
+                            <label for="patient-name">이름</label>
+                            <input type="text" id="patient-name" placeholder="홍길동" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="patient-birth">생년월일</label>
+                            <input type="date" id="patient-birth" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="patient-phone">전화번호</label>
+                            <input type="tel" id="patient-phone" placeholder="010-1234-5678" required>
+                        </div>
+                        <button type="button" class="next-btn" onclick="nextStep('symptoms')">다음</button>
+                    </form>
+                </div>
+                
+                <!-- Symptom Selection -->
+                <div id="symptoms-input" class="step-content">
+                    <h2>증상을 선택해주세요</h2>
+                    <div class="symptoms-grid">
+                        <label class="symptom-item">
+                            <input type="checkbox" value="fever">
+                            <span class="checkmark"></span>
+                            <i class="fas fa-thermometer-half"></i>
+                            발열
+                        </label>
+                        <label class="symptom-item">
+                            <input type="checkbox" value="cough">
+                            <span class="checkmark"></span>
+                            <i class="fas fa-lungs"></i>
+                            기침
+                        </label>
+                        <label class="symptom-item">
+                            <input type="checkbox" value="headache">
+                            <span class="checkmark"></span>
+                            <i class="fas fa-head-side-cough"></i>
+                            두통
+                        </label>
+                        <label class="symptom-item">
+                            <input type="checkbox" value="stomachache">
+                            <span class="checkmark"></span>
+                            <i class="fas fa-stomach"></i>
+                            복통
+                        </label>
+                        <label class="symptom-item">
+                            <input type="checkbox" value="joint-pain">
+                            <span class="checkmark"></span>
+                            <i class="fas fa-bone"></i>
+                            관절통
+                        </label>
+                        <label class="symptom-item">
+                            <input type="checkbox" value="skin-rash">
+                            <span class="checkmark"></span>
+                            <i class="fas fa-hand-dots"></i>
+                            피부발진
+                        </label>
+                    </div>
+                    <button type="button" class="next-btn" onclick="nextStep('department')">다음</button>
+                </div>
+                
+                <!-- Department Selection -->
+                <div id="department-input" class="step-content">
+                    <h2>진료과를 선택해주세요</h2>
+                    <div class="departments-grid">
+                        <button class="department-btn" data-dept="internal">
+                            <i class="fas fa-stethoscope"></i>
+                            <span>내과</span>
+                        </button>
+                        <button class="department-btn" data-dept="surgery">
+                            <i class="fas fa-scalpel"></i>
+                            <span>외과</span>
+                        </button>
+                        <button class="department-btn" data-dept="pediatrics">
+                            <i class="fas fa-baby"></i>
+                            <span>소아과</span>
+                        </button>
+                        <button class="department-btn" data-dept="orthopedics">
+                            <i class="fas fa-bone"></i>
+                            <span>정형외과</span>
+                        </button>
+                        <button class="department-btn" data-dept="dermatology">
+                            <i class="fas fa-hand-dots"></i>
+                            <span>피부과</span>
+                        </button>
+                        <button class="department-btn" data-dept="emergency">
+                            <i class="fas fa-ambulance"></i>
+                            <span>응급실</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Confirmation -->
+                <div id="confirmation" class="step-content">
+                    <div class="success-message">
+                        <i class="fas fa-check-circle"></i>
+                        <h2>접수가 완료되었습니다!</h2>
+                    </div>
+                    <div class="ticket-info">
+                        <div class="queue-number">
+                            <span class="label">대기번호</span>
+                            <span class="number" id="queue-num">42</span>
+                        </div>
+                        <div class="location-info">
+                            <p><i class="fas fa-map-marker-alt"></i> <span id="dept-location">내과 - 2층 201호</span></p>
+                            <p><i class="fas fa-clock"></i> 예상 대기시간: <span id="wait-time">약 15분</span></p>
+                        </div>
+                    </div>
+                    <button class="complete-btn" onclick="goHome()">홈으로 돌아가기</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Screen -->
+        <div id="payment-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="goHome()">
+                    <i class="fas fa-arrow-left"></i> 뒤로
+                </button>
+                <h1>진료비 수납</h1>
+            </div>
+            <div class="coming-soon">
+                <i class="fas fa-credit-card"></i>
+                <h2>결제 화면</h2>
+                <p>결제 기능 구현 예정</p>
+            </div>
+        </div>
+
+        <!-- Certificate Screen -->
+        <div id="certificate-screen" class="screen">
+            <div class="screen-header">
+                <button class="back-btn" onclick="goHome()">
+                    <i class="fas fa-arrow-left"></i> 뒤로
+                </button>
+                <h1>증명서 발급</h1>
+            </div>
+            <div class="coming-soon">
+                <i class="fas fa-file-medical"></i>
+                <h2>증명서 발급</h2>
+                <p>증명서 발급 기능 구현 예정</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Timeout Warning Modal -->
+    <div id="timeout-modal" class="modal">
+        <div class="modal-content">
+            <h2><i class="fas fa-exclamation-triangle"></i> 알림</h2>
+            <p id="timeout-message">30초 후 초기 화면으로 돌아갑니다</p>
+            <button onclick="resetTimeout()" class="modal-btn">계속 사용하기</button>
+        </div>
+    </div>
+
+    <!-- Loading Indicator -->
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>처리 중...</p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/static/js/app.js"></script>
+    <script src="/static/js/accessibility.js"></script>
+    <script src="/static/js/i18n.js"></script>
+    <script src="/static/js/api.js"></script>
+</body>
+</html>

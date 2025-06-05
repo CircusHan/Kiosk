@@ -1,0 +1,464 @@
+/* 접근성 전용 스타일 */
+
+/* 접근성 도구바 */
+.accessibility-bar {
+    background: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.accessibility-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 글자 크기 조절 */
+.font-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.font-controls label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #495057;
+    margin-right: 10px;
+}
+
+#font-slider {
+    width: 150px;
+    height: 6px;
+    background: #dee2e6;
+    outline: none;
+    border-radius: 3px;
+    -webkit-appearance: none;
+}
+
+#font-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#font-slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 접근성 버튼 */
+.accessibility-btn {
+    background: transparent;
+    border: 2px solid #6c757d;
+    color: #6c757d;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 40px;
+}
+
+.accessibility-btn:hover {
+    background: #6c757d;
+    color: white;
+    transform: translateY(-1px);
+}
+
+.accessibility-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.accessibility-btn.emergency {
+    border-color: var(--danger-color);
+    color: var(--danger-color);
+    font-weight: bold;
+}
+
+.accessibility-btn.emergency:hover {
+    background: var(--danger-color);
+    color: white;
+}
+
+/* 언어 선택 */
+.language-selection select {
+    padding: 8px 12px;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 14px;
+    background: white;
+    cursor: pointer;
+    min-width: 120px;
+}
+
+.language-selection select:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+/* 접근성 옵션별 스타일 */
+
+/* 고대비 모드 */
+body.high-contrast {
+    --background-color: #000000;
+    --text-color: #ffffff;
+    --primary-color: #ffff00;
+    --primary-dark: #cccc00;
+    --secondary-color: #00ff00;
+    --danger-color: #ff0000;
+    --light-gray: #333333;
+    --medium-gray: #666666;
+    --dark-color: #ffffff;
+}
+
+body.high-contrast .app-container {
+    background: #000000;
+    color: #ffffff;
+}
+
+body.high-contrast .service-btn {
+    background: #000000;
+    color: #ffffff;
+    border-color: #ffff00;
+}
+
+body.high-contrast .service-btn:hover {
+    background: #333333;
+    border-color: #ffff00;
+}
+
+body.high-contrast input {
+    background: #000000;
+    color: #ffffff;
+    border-color: #ffff00;
+}
+
+body.high-contrast .modal-content {
+    background: #000000;
+    color: #ffffff;
+    border: 2px solid #ffff00;
+}
+
+body.high-contrast .accessibility-bar {
+    background: #000000;
+    color: #ffffff;
+    border-bottom-color: #ffff00;
+}
+
+/* 큰 글자 모드 */
+body.large-text {
+    --font-size-base: 20px;
+    --font-size-large: 28px;
+    --font-size-xlarge: 36px;
+}
+
+body.large-text .main-title {
+    font-size: 4rem;
+}
+
+body.large-text .service-text h2 {
+    font-size: 2rem;
+}
+
+body.large-text .service-text p {
+    font-size: 1.2rem;
+}
+
+/* 색맹 모드 */
+body.colorblind-protanopia {
+    filter: url('#protanopia-filter');
+}
+
+body.colorblind-deuteranopia {
+    filter: url('#deuteranopia-filter');
+}
+
+body.colorblind-tritanopia {
+    filter: url('#tritanopia-filter');
+}
+
+/* 간소화된 인터페이스 */
+body.simplified {
+    --border-radius: 5px;
+}
+
+body.simplified .service-btn {
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+body.simplified .service-btn:hover {
+    transform: none;
+    box-shadow: 0 0 0 3px var(--primary-color);
+}
+
+body.simplified .screen {
+    animation: none;
+}
+
+/* 터치 타겟 크기 증가 */
+body.large-touch .accessibility-btn,
+body.large-touch .service-btn,
+body.large-touch input,
+body.large-touch button {
+    min-height: 60px;
+    padding: 20px;
+    font-size: 18px;
+}
+
+body.large-touch .symptom-item,
+body.large-touch .department-btn {
+    min-height: 150px;
+    padding: 30px;
+}
+
+/* 포커스 표시 강화 */
+body.enhanced-focus *:focus {
+    outline: 4px solid #ff6b6b;
+    outline-offset: 4px;
+    box-shadow: 0 0 0 8px rgba(255, 107, 107, 0.3);
+}
+
+/* 움직임 줄이기 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .screen {
+        animation: none !important;
+    }
+    
+    .service-btn:hover {
+        transform: none !important;
+    }
+}
+
+/* 고대비 선호도 */
+@media (prefers-contrast: high) {
+    body {
+        --background-color: #000000;
+        --text-color: #ffffff;
+        --primary-color: #ffff00;
+        --border-radius: 0;
+    }
+    
+    .service-btn,
+    input,
+    button {
+        border-width: 3px;
+        border-radius: 0;
+    }
+}
+
+/* 색상 scheme 선호도 */
+@media (prefers-color-scheme: dark) {
+    body:not(.high-contrast) {
+        --background-color: #1a1a1a;
+        --text-color: #ffffff;
+        --light-gray: #2d2d2d;
+        --medium-gray: #404040;
+        --dark-color: #ffffff;
+    }
+    
+    body:not(.high-contrast) .app-container {
+        background: #1a1a1a;
+    }
+    
+    body:not(.high-contrast) .service-btn {
+        background: #2d2d2d;
+        color: #ffffff;
+    }
+}
+
+/* 스크린 리더 전용 알림 */
+.sr-announcement {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* 키보드 내비게이션 도움말 */
+.keyboard-help {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.keyboard-help.show {
+    opacity: 1;
+}
+
+/* 터치 피드백 */
+.touch-feedback {
+    position: relative;
+    overflow: hidden;
+}
+
+.touch-feedback::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.touch-feedback:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+/* 반응형 접근성 조정 */
+@media (max-width: 768px) {
+    .accessibility-controls {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .font-controls {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .accessibility-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: center;
+    }
+    
+    .accessibility-btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+    
+    #font-slider {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .accessibility-bar {
+        padding: 8px 15px;
+    }
+    
+    .accessibility-btn {
+        font-size: 11px;
+        padding: 5px 10px;
+        min-height: 35px;
+    }
+    
+    .font-controls label {
+        font-size: 12px;
+    }
+    
+    #font-slider {
+        width: 150px;
+    }
+}
+
+/* 색맹 필터 SVG */
+.colorblind-filters {
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+
+/* Windows 고대비 모드 지원 */
+@media (prefers-contrast: high) {
+    .service-btn {
+        border-width: 3px;
+    }
+    
+    .accessibility-btn {
+        border-width: 2px;
+    }
+    
+    input {
+        border-width: 2px;
+    }
+}
+
+/* iOS VoiceOver 최적화 */
+@media (prefers-reduced-motion: reduce) {
+    .loading .spinner {
+        animation: none;
+        border: 4px solid var(--primary-color);
+        border-radius: 0;
+    }
+}
+
+/* Android TalkBack 최적화 */
+.android-talkback .service-btn::after {
+    content: '. 버튼';
+    position: absolute;
+    left: -10000px;
+}
+
+/* NVDA/JAWS 스크린 리더 최적화 */
+.nvda-compatible .step-content::before {
+    content: '단계 ' counter(step-counter) '. ';
+    position: absolute;
+    left: -10000px;
+}
+
+/* 인지 접근성 - 오류 방지 */
+.error-prevention .next-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.error-prevention .required-field {
+    border-left: 4px solid var(--danger-color);
+}
+
+.error-prevention .field-error {
+    color: var(--danger-color);
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: bold;
+}

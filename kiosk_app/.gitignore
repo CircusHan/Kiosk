@@ -1,0 +1,89 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+.coverage
+.pytest_cache/
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# Logs
+*.log
+logs/
+log/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Documentation
+docs/_build/
+site/
+
+# Backups
+backup/
+*.bak
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Hardware device logs
+device_logs/
+
+# Certificates
+*.pem
+*.key
+*.crt
+
+# Media files
+media/
+uploads/
+
+# Cache
+.cache/
+*.cache
+
+# Distribution
+*.wheel
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
